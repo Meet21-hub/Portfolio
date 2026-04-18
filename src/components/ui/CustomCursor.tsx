@@ -78,24 +78,24 @@ export default function CustomCursor() {
     state === "link"   ? 44 : 34;
 
   const ringBorderColor =
-    state === "button" ? "#8b5cf6" :
-    state === "link"   ? "#8b5cf6" :
+    state === "button" ? "#10b981" :
+    state === "link"   ? "#10b981" :
     state === "card"   ? "rgba(255,255,255,0.85)" :
-                         "rgba(255,255,255,0.4)";
+                         "rgba(16,185,129,0.4)";
 
   const ringBg =
-    state === "button" ? "rgba(139,92,246,0.08)" :
+    state === "button" ? "rgba(16,185,129,0.08)" :
     state === "card"   ? "rgba(255,255,255,0.03)" :
                          "transparent";
 
   const ringGlow =
-    state === "button" ? "0 0 28px rgba(139,92,246,0.55), inset 0 0 10px rgba(139,92,246,0.1)" :
-    state === "link"   ? "0 0 16px rgba(139,92,246,0.4)" :
+    state === "button" ? "0 0 28px rgba(16,185,129,0.3), inset 0 0 10px rgba(16,185,129,0.1)" :
+    state === "link"   ? "0 0 16px rgba(16,185,129,0.2)" :
     state === "card"   ? "0 0 18px rgba(255,255,255,0.12)" :
                          "none";
 
   const dotColor =
-    state === "link" ? "#8b5cf6" : "#ffffff";
+    state === "link" ? "#10b981" : "#ffffff";
 
   return (
     <>
@@ -148,7 +148,7 @@ export default function CustomCursor() {
               exit={{ opacity: 0, scale: 0.4 }}
               transition={{ duration: 0.15 }}
               className="text-[8px] font-mono uppercase tracking-[0.22em] font-bold select-none"
-              style={{ color: "#a78bfa" }}
+              style={{ color: "#10b981" }}
             >
               Click
             </motion.span>

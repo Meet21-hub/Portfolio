@@ -1,52 +1,52 @@
-# Meet Khandelwal | Portfolio
+# Meet Khandelwal
+### Software Developer | Backend Architect | VR Engineer
 
-A premium, immersive web experience built with **Next.js**, **Three.js**, and **GSAP**. This portfolio showcases a "Liquid Glass" design system, combining sophisticated glassmorphism with dynamic motion design.
-
-## ✨ Highlights
-
-- **Liquid Glass UI**: A unified design system using custom `GlassCard` components with backdrop-blur and semi-transparent gradients.
-- **3D Tilt Interactions**: Interactive project cards using manual perspective tracking and GSAP for deep-focus visual hierarchy.
-- **GSAP Scroll Parallax**: Smooth, scroll-linked animations and pinning effects for a cinematic storytelling experience.
-- **Interactive Cursor**: A custom high-performance cursor system that reacts to interactive elements.
-- **Adaptive Motion**: Comprehensive animation system powered by **Framer Motion**, featuring staggered entrances and scroll-triggered reveals.
-
-## 🛠 Tech Stack
-
-- **Frontend**: [Next.js](https://nextjs.org/) (App Router), [React](https://react.dev/)
-- **Animation**: [GSAP](https://greensock.com/gsap/), [Framer Motion](https://www.framer.com/motion/)
-- **Graphics**: [Three.js](https://threejs.org/) (with React Three Fiber)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm / pnpm / yarn
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Meet21-hub/Portfolio.git
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) to view the result.
-
-## 📦 Deployment
-
-Optimized for deployment on the [Vercel Platform](https://vercel.com/).
+I am a software developer dedicated to engineering resilient, high-performance **backend systems** and exploring the intersection of immersive technology and traditional software architecture. My work focuses on building scalable infrastructures that are as efficient under the hood as they are seamless on the surface.
 
 ---
-© 2026 Meet Khandelwal · Crafted with passion and precision.
+
+## 🚀 Core Expertise
+
+### / Backend Engineering
+Specializing in production-ready microservices and secure API design.
+- **Frameworks**: Spring Boot, Spring Security, Next.js
+- **Foundations**: Java, RESTful Architecture, API Design
+- **Security**: JWT Authentication, RBAC (Role-Based Access Control)
+- **Data**: MySQL, Relational Schema Optimization, Complex Queries
+
+### / Immersive Technology
+Bridging the gap between 2D interfaces and 3D spatial computing.
+- **Engines**: Unity 3D
+- **Logic**: C# Scripting
+- **Interactions**: First-person VR mechanics, Real-time Rendering
+- **Design**: Creative layer integration in immersive systems
+
+---
+
+## 📈 Academic Excellence
+Consistently striving for precision and excellence in both engineering and research.
+- **CGPA**: 9.66
+- **Focus**: Distributed Systems, Secure Backend Patterns, Immersive UX
+
+---
+
+## 🛠 Project Philosophy
+My approach to project development is governed by **Industrial Precision** and **Editorial Aesthetic**. I believe that technical robustness should be matched by clean, architectural design.
+
+### / Design System
+- **Obsidian Black (#080808)**: The foundation of my digital workspace.
+- **Deep Emerald (#10b981)**: Representing growth, precision, and energy.
+- **Typography**: Utilizing bespoke typefaces (Equinox, Deltha) to create high-impact, professional identities.
+
+---
+
+## 📧 Connect
+I'm always open to discussing backend architecture, system design, or new opportunities in the immersive tech space.
+
+- **GitHub**: [Meet21-hub](https://github.com/Meet21-hub)
+- **LinkedIn**: [Integrated Ecosystem](https://linkedin.com/in/yourusername)
+- **Email**: [contact@example.com](mailto:contact@example.com)
+
+---
+
+*"Orchestrating systems that are as efficient under the hood as they are seamless on the surface."*

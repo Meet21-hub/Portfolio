@@ -9,6 +9,7 @@ interface GlassCardProps {
   hover?: boolean;
   glowColor?: string;
   rounded?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -19,18 +20,23 @@ export default function GlassCard({
   children,
   className = "",
   hover = true,
-  glowColor = "#8b5cf6",
-  rounded = "rounded-xl"
+  glowColor = "#10b981", // Emerald default
+  rounded = "rounded-none", // Sharp edges for editorial look
+  style = {}
 }: GlassCardProps) {
   return (
     <motion.div
       whileHover={hover ? {
-        scale: 1.02,
-        borderColor: `${glowColor}60`,
-        boxShadow: `0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px ${glowColor}25`,
+        scale: 1.01,
+        borderColor: `${glowColor}80`,
+        boxShadow: `0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px ${glowColor}15`,
       } : {}}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`relative backdrop-blur-lg bg-white/5 border border-white/10 ${rounded} overflow-hidden ${className}`}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative backdrop-blur-xl border border-white/5 ${rounded} overflow-hidden ${className}`}
+      style={{
+        background: className.includes('bg-') ? undefined : 'rgba(12, 12, 12, 0.85)',
+        ...style
+      }}
     >
       {children}
     </motion.div>

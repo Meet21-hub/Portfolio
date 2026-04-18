@@ -30,7 +30,7 @@ const projects = [
     tech: ["Java", "Spring Boot", "MySQL", "JWT", "REST APIs"],
     link: "#",
     repo: "https://github.com/Meet21-hub/Smart-Leave-Management-System",
-    accent: "#8b5cf6",
+    accent: "#10b981", // Emerald
     primary: true,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
   },
@@ -48,7 +48,7 @@ const projects = [
     tech: ["Java", "Java Swing", "MySQL"],
     link: "#",
     repo: "https://github.com/Meet21-hub/student-management-system-java",
-    accent: "#06b6d4",
+    accent: "#ffffff", 
     primary: false,
     image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=800",
   },
@@ -66,7 +66,7 @@ const projects = [
     tech: ["Unity", "C#", "VR Development"],
     link: "#",
     repo: "#",
-    accent: "#f59e0b",
+    accent: "#10b981", 
     primary: false,
     image: "/vr_screenshot_1.jpg",
   },
@@ -212,7 +212,7 @@ function ProjectCard({
       >
         <GlassCard
           hover={false}
-          rounded="rounded-2xl"
+          rounded="rounded-none"
           className="relative h-full"
           style={{
             opacity: cardOpacity,
@@ -282,16 +282,16 @@ function ProjectCard({
               </span>
               <div className="flex items-center gap-3">
                 {project.primary && (
-                  <span className="relative flex h-2 w-2">
-                    <span
-                      className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                      style={{ background: project.accent }}
-                    />
-                    <span
-                      className="relative inline-flex rounded-full h-2 w-2"
-                      style={{ background: project.accent }}
-                    />
-                  </span>
+                    <span className="flex h-2 w-2 relative">
+                      <span
+                        className="animate-ping absolute inline-flex h-full w-full rounded-none opacity-75"
+                        style={{ background: project.accent }}
+                      />
+                      <span
+                        className="relative inline-flex rounded-none h-2 w-2"
+                        style={{ background: project.accent }}
+                      />
+                    </span>
                 )}
                 <span
                   className="text-[11px] font-mono uppercase tracking-[0.25em]"
@@ -319,7 +319,7 @@ function ProjectCard({
                 {project.title}
               </h3>
               <div
-                className="h-[2px] w-16 mb-6 rounded-full"
+                className="h-[2px] w-16 mb-6 rounded-none"
                 style={{ background: project.accent }}
               />
             </div>
@@ -333,7 +333,7 @@ function ProjectCard({
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="px-3 py-1 rounded-full text-xs font-mono bg-black/40 text-gray-200 border"
+                      className="px-3 py-1 rounded-none text-[10px] font-mono bg-black/40 text-gray-200 border border-white/10 uppercase tracking-widest"
                       style={{ borderColor: `${project.accent}30` }}
                     >
                       {t}
@@ -346,7 +346,7 @@ function ProjectCard({
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full text-white transition-all hover:brightness-110"
+                      className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-none text-[#080808] transition-all hover:brightness-110"
                       style={{ background: project.accent }}
                     >
                       View Live <ExternalLink className="w-4 h-4" />
@@ -357,7 +357,7 @@ function ProjectCard({
                       href={project.repo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-5 py-2.5 text-sm bg-white/10 text-white rounded-full hover:bg-white/20 transition-colors border border-white/10"
+                      className="flex items-center gap-2 px-5 py-2.5 text-sm bg-white/5 text-white rounded-none hover:bg-white/10 transition-colors border border-white/10"
                     >
                       Source <GithubIcon className="w-4 h-4" />
                     </a>
@@ -461,13 +461,13 @@ export default function ProjectsSection() {
         ref={sweepRef}
         className="absolute top-0 left-0 right-0 h-[1px] origin-left"
         style={{
-          background: "linear-gradient(to right, transparent, #8b5cf6, #06b6d4, transparent)",
+          background: "linear-gradient(to right, transparent, var(--color-primary), white, transparent)",
         }}
       />
 
       {/* Ambient spotlight behind right column */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-[62%] pointer-events-none"
+        className="absolute right-0 top-0 bottom-0 w-[58%] pointer-events-none"
         style={{
           opacity: activeProject ? 0.06 : 0,
           background: activeProject
@@ -477,22 +477,22 @@ export default function ProjectsSection() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-28 relative">
 
         {/* ─── LEFT: STICKY heading + live progress tracker ─── */}
-        <div className="lg:w-[38%] shrink-0 relative h-full z-20">
+        <div className="lg:w-[42%] shrink-0 relative h-full z-20">
           <div ref={leftColumnRef} className="flex flex-col">
-            <motion.p variants={childVariants} className="text-xs font-mono text-gray-500 uppercase tracking-[0.3em] mb-4">
-              03. Selected Work
+            <motion.p variants={childVariants} className="text-[10px] font-mono text-white/40 uppercase tracking-[0.4em] mb-4">
+              03 / SELECTED WORK
             </motion.p>
 
-            <motion.h2 variants={childVariants} className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-primary to-secondary bg-[length:200%_auto] animate-gradient tracking-tighter leading-none mb-4 drop-shadow-[0_0_20px_rgba(139,92,246,0.3)]">
-              FEATURED
+            <motion.h2 variants={childVariants} className="text-5xl md:text-7xl font-deltha text-white tracking-tight leading-[0.85] mb-6 uppercase">
+              Featured
               <br />
-              WORKS
+              Works
             </motion.h2>
 
-            <motion.div variants={childVariants} className="h-px w-16 bg-gradient-to-r from-primary to-transparent mb-5 origin-left" />
+            <motion.div variants={childVariants} className="h-[1px] w-24 bg-primary mb-8 origin-left" />
 
             <motion.p variants={childVariants} className="text-gray-400 text-sm leading-relaxed mb-8">
               A selection of projects demonstrating backend architecture, systems
@@ -570,11 +570,11 @@ export default function ProjectsSection() {
                       }}
                     >
                       <span
-                        className="animate-ping absolute inline-flex h-1.5 w-1.5 rounded-full opacity-75"
+                        className="animate-ping absolute inline-flex h-1.5 w-1.5 rounded-none opacity-75"
                         style={{ background: p.accent }}
                       />
                       <span
-                        className="relative inline-flex rounded-full h-1.5 w-1.5"
+                        className="relative inline-flex rounded-none h-1.5 w-1.5"
                         style={{ background: p.accent }}
                       />
                     </span>

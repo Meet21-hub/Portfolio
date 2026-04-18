@@ -9,41 +9,41 @@ export default function AboutSection() {
   return (
     <motion.section
       id="about-content"
-      className="py-28 px-6 md:px-12"
+      className="py-20 px-6 md:px-12"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       variants={sectionVariants}
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
 
         {/* LEFT: Sticky label */}
-        <div className="lg:w-1/3 lg:sticky lg:top-28 shrink-0">
-          <motion.p variants={childVariants} className="text-xs font-mono text-gray-500 uppercase tracking-[0.3em] mb-5">
-            01. Who I Am
+        <div className="lg:w-1/3 lg:sticky lg:top-32 shrink-0">
+          <motion.p variants={childVariants} className="text-[10px] font-mono text-white/40 uppercase tracking-[0.4em] mb-5">
+            01 / WHO I AM
           </motion.p>
           <motion.h2
             variants={childVariants}
-            className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 leading-none"
+            className="text-5xl md:text-7xl font-deltha text-white tracking-tight mb-4 leading-[0.85] uppercase"
           >
             About{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">
+            <span className="text-primary">
               Me
             </span>
           </motion.h2>
-          <motion.div variants={childVariants} className="h-px w-16 bg-gradient-to-r from-primary/60 to-transparent mb-8" />
+          <motion.div variants={childVariants} className="h-[1px] w-24 bg-primary mb-12" />
 
           {/* Avatar - using GlassCard for small badge style */}
           <motion.div variants={childVariants}>
-            <GlassCard hover={false} rounded="rounded-full" className="w-16 h-16 flex items-center justify-center">
-              <span className="text-xl font-mono text-gray-300 font-bold tracking-tight">MK</span>
+            <GlassCard hover={false} rounded="rounded-none" className="w-16 h-16 flex items-center justify-center border-primary/20 bg-primary/5">
+              <span className="text-xl font-deltha text-primary font-bold tracking-tight">MK</span>
             </GlassCard>
           </motion.div>
         </div>
 
         {/* RIGHT: Body copy inside a GlassCard panel ── */}
         <div className="lg:w-2/3">
-          <GlassCard hover={false} rounded="rounded-3xl" className="group">
+          <GlassCard hover={false} rounded="rounded-none" className="group">
             <GlassGlare />
             <div className="relative z-10 p-8 md:p-10 space-y-8">
 
@@ -63,7 +63,7 @@ export default function AboutSection() {
               >
                 Beyond the backend, I bridge immersive technology and software engineering
                 with experience in{" "}
-                <span className="text-secondary font-semibold">AR/VR and Unity development</span>.
+                <span className="text-primary font-semibold">AR/VR and Unity development</span>.
                 This keeps my approach dynamic and user-centric.
               </motion.p>
 
@@ -72,7 +72,9 @@ export default function AboutSection() {
                 className="text-gray-400 leading-[1.9] text-base md:text-lg"
               >
                 Consistently striving for excellence, marked by a strong academic record{" "}
-                <span className="inline-flex items-center ml-1 px-2.5 py-0.5 rounded-full border border-accent/20 bg-accent/5 text-accent/80 text-sm font-mono italic">
+                <span 
+                  className="inline-flex items-center ml-1 px-2.5 py-0.5 rounded-none border border-primary/20 bg-primary/5 text-primary font-mono text-xs uppercase tracking-widest"
+                >
                   CGPA: 9.66
                 </span>
                 .{" "}My goal is to orchestrate systems that are as efficient under the
@@ -90,7 +92,7 @@ export default function AboutSection() {
                   { val: "3+", label: "Projects shipped" },
                 ].map(({ val, label }) => (
                   <motion.div key={label} variants={childVariants}>
-                    <GlassCard rounded="rounded-2xl" className="px-5 py-3" glowColor="#ffffff">
+                    <GlassCard rounded="rounded-none" className="px-5 py-3" glowColor="#ffffff">
                       <div className="text-2xl font-black text-white mb-0.5">{val}</div>
                       <div className="text-[11px] font-mono text-gray-500 uppercase tracking-widest">{label}</div>
                     </GlassCard>

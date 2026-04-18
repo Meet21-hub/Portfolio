@@ -31,15 +31,15 @@ export default function HeroSection() {
         <div className="overflow-hidden">
           <motion.h1
             variants={childVariants}
-            className="text-7xl md:text-[12vw] font-black text-white leading-none tracking-tighter text-center uppercase drop-shadow-2xl"
+            className="text-[12vw] md:text-[10vw] font-equinox font-bold text-white leading-[0.85] tracking-tight text-center uppercase"
           >
             MEET
           </motion.h1>
         </div>
-        <div className="overflow-hidden -mt-2 md:-mt-8">
+        <div className="overflow-hidden">
           <motion.h1
             variants={childVariants}
-            className="text-7xl md:text-[12vw] font-black text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary leading-none tracking-tighter text-center uppercase bg-[length:200%_auto] animate-gradient glow-text"
+            className="text-[12vw] md:text-[10vw] font-equinox font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-primary to-primary/40 leading-[0.85] tracking-tight text-center uppercase"
           >
             KHANDELWAL
           </motion.h1>

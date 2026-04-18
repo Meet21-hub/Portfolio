@@ -58,8 +58,8 @@ export default function Navbar() {
     const rect = el.getBoundingClientRect();
     const xPct = ((e.clientX - rect.left) / rect.width) * 100;
     glow.style.background = `radial-gradient(circle at ${xPct}% 50%,
-      rgba(139,92,246,0.25) 0%,
-      rgba(6,182,212,0.12) 35%,
+      rgba(16,185,129,0.15) 0%,
+      rgba(255,255,255,0.05) 35%,
       transparent 65%)`;
   };
 
@@ -75,12 +75,12 @@ export default function Navbar() {
 
   const boxShadow = [
     scrolled
-      ? "0 12px 48px rgba(0,0,0,0.6)"
-      : "0 4px 20px rgba(0,0,0,0.25)",
+      ? "0 12px 48px rgba(0,0,0,0.8)"
+      : "0 4px 20px rgba(0,0,0,0.4)",
     navHovered
-      ? "0 0 28px rgba(139,92,246,0.18), 0 0 60px rgba(139,92,246,0.07)"
+      ? "0 0 28px rgba(16,185,129,0.1), 0 0 60px rgba(16,185,129,0.05)"
       : "",
-    "inset 0 1px 0 rgba(255,255,255,0.10)",  // top glass highlight — always
+    "inset 0 1px 0 rgba(255,255,255,0.05)",  // top glass highlight — always
   ].filter(Boolean).join(", ");
 
   return (
@@ -92,12 +92,12 @@ export default function Navbar() {
     >
       {/* ── Outer glow halo — separate layer so it can bleed outside the pill ── */}
       <div
-        className="absolute inset-0 rounded-full pointer-events-none -z-10"
+        className="absolute inset-0 rounded-none pointer-events-none -z-10"
         style={{
           boxShadow: navHovered
-            ? "0 0 0 1px rgba(139,92,246,0.25), 0 0 40px rgba(139,92,246,0.12)"
+            ? "0 0 0 1px rgba(16,185,129,0.2), 0 0 40px rgba(16,185,129,0.08)"
             : scrolled
-            ? "0 0 0 1px rgba(139,92,246,0.10)"
+            ? "0 0 0 1px rgba(16,185,129,0.05)"
             : "none",
           transition: "box-shadow 0.45s ease",
         }}
@@ -109,53 +109,40 @@ export default function Navbar() {
         onMouseMove={onNavMouseMove}
         onMouseEnter={() => setNavHovered(true)}
         onMouseLeave={() => { setNavHovered(false); }}
-        className={`relative flex items-center gap-1 px-3 py-2.5 rounded-full overflow-hidden backdrop-blur-xl border border-white/10 transition-all duration-500 ${
-          scrolled ? "bg-white/[0.08]" : "bg-white/5"
+        className={`relative flex items-center gap-1 px-3 py-2 rounded-none overflow-hidden backdrop-blur-2xl border border-white/5 transition-all duration-500 ${
+          scrolled ? "bg-black/80" : "bg-black/40"
         }`}
         style={{
           boxShadow,
         }}
       >
-        {/* Permanent purple→cyan gradient tint across navbar */}
+        {/* Permanent emerald tint across navbar */}
         <div
-          className="absolute inset-0 pointer-events-none rounded-full"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(108deg, rgba(139,92,246,0.10) 0%, rgba(6,182,212,0.07) 55%, transparent 100%)",
+              "linear-gradient(108deg, rgba(16,185,129,0.08) 0%, transparent 100%)",
           }}
         />
 
         {/* Top inner highlight — the glass surface light source */}
         <div
-          className="absolute top-0 left-[8%] right-[8%] h-px pointer-events-none"
+          className="absolute top-0 left-0 right-0 h-px pointer-events-none"
           style={{
             background:
-              "linear-gradient(to right, transparent, rgba(255,255,255,0.30), rgba(139,92,246,0.35), rgba(6,182,212,0.22), transparent)",
-            borderRadius: "9999px",
+              "linear-gradient(to right, transparent, rgba(16,185,129,0.2), transparent)",
           }}
         />
 
         {/* Cursor-following light sweep — fades in/out with nav hover state */}
         <div
           ref={lightRef}
-          className="absolute inset-0 pointer-events-none rounded-full"
+          className="absolute inset-0 pointer-events-none"
           style={{
             opacity:    navHovered ? 1 : 0,
             transition: "opacity 0.4s ease",
           }}
         />
-
-        {/* Bottom edge shadow — gives depth, like glass resting on a surface */}
-        <div
-          className="absolute bottom-0 left-[15%] right-[15%] h-px pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, transparent, rgba(0,0,0,0.4), transparent)",
-          }}
-        />
-
-        {/* Hyper-realistic moving glass reflection */}
-        <GlassGlare />
 
         {/* ── Nav Links ─────────────────────────────────────────────────── */}
         {links.map((link) => {
@@ -170,27 +157,21 @@ export default function Navbar() {
               onClick={(e) => handleClick(e, link.href)}
               onMouseEnter={() => setHoveredId(link.id)}
               onMouseLeave={() => setHoveredId(null)}
-              className="relative px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-[0.18em] select-none"
+              className="relative px-4 py-1.5 rounded-none text-[10px] font-mono uppercase tracking-[0.25em] select-none"
             >
               {/* Sliding active / hover pill (shared layout animation) */}
               <AnimatePresence>
                 {isHighlit && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full"
+                    className="absolute inset-0 rounded-none"
                     style={{
                       background: isActive
-                        ? "linear-gradient(135deg, rgba(139,92,246,0.28), rgba(6,182,212,0.14))"
-                        : "rgba(255,255,255,0.055)",
+                        ? "rgba(16,185,129,0.12)"
+                        : "rgba(255,255,255,0.03)",
                       border: isActive
-                        ? "1px solid rgba(139,92,246,0.45)"
-                        : "1px solid rgba(255,255,255,0.10)",
-                      boxShadow: isActive
-                        ? [
-                            "inset 0 1px 0 rgba(255,255,255,0.15)",
-                            "0 0 16px rgba(139,92,246,0.25)",
-                          ].join(", ")
-                        : "inset 0 1px 0 rgba(255,255,255,0.07)",
+                        ? "1px solid rgba(16,185,129,0.3)"
+                        : "1px solid rgba(255,255,255,0.05)",
                     }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -207,12 +188,10 @@ export default function Navbar() {
                   color: isActive
                     ? "#ffffff"
                     : isHovered
-                    ? "rgba(255,255,255,0.88)"
-                    : "rgba(156,163,175,1)",
+                    ? "rgba(255,255,255,0.9)"
+                    : "rgba(156,163,175,0.8)",
                   textShadow: isActive
-                    ? "0 0 14px rgba(139,92,246,0.75), 0 0 30px rgba(139,92,246,0.3)"
-                    : isHovered
-                    ? "0 0 10px rgba(255,255,255,0.22)"
+                    ? "0 0 12px rgba(16,185,129,0.6)"
                     : "none",
                 }}
                 transition={{ duration: 0.22, ease: "easeOut" }}
@@ -222,18 +201,10 @@ export default function Navbar() {
 
               {/* Underline: center-expand, gradient on active */}
               <motion.span
-                className="absolute bottom-0.5 left-[20%] right-[20%] h-[1.5px] rounded-full origin-center"
-                style={{
-                  background: isActive
-                    ? "linear-gradient(to right, #8b5cf6, #06b6d4)"
-                    : "rgba(255,255,255,0.38)",
-                  boxShadow: isActive
-                    ? "0 0 8px rgba(139,92,246,0.8), 0 0 16px rgba(6,182,212,0.4)"
-                    : "none",
-                }}
+                className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-primary origin-left"
                 animate={{
-                  scaleX: isActive ? 1 : isHovered ? 0.6 : 0,
-                  opacity: isActive || isHovered ? 1 : 0,
+                  scaleX: isActive ? 1 : 0,
+                  opacity: isActive ? 1 : 0,
                 }}
                 transition={{ duration: 0.26, ease: "easeOut" }}
               />

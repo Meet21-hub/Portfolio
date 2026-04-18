@@ -11,31 +11,31 @@ function DynamicLights() {
   const light2 = useRef<THREE.SpotLight>(null);
   const ambient = useRef<THREE.AmbientLight>(null);
 
-  // Lighting Colors mapped mapping
+  // Lighting Colors mapped to theme
   const colors = {
-    top1: new THREE.Color("#8b5cf6"), // primary purple
-    bottom1: new THREE.Color("#f59e0b"), // accent gold
-    top2: new THREE.Color("#06b6d4"), // cyan
-    bottom2: new THREE.Color("#ef4444"), // red
+    top1: new THREE.Color("#6366f1"), // indigo
+    bottom1: new THREE.Color("#22d3ee"), // cyan
+    top2: new THREE.Color("#22d3ee"), // cyan
+    bottom2: new THREE.Color("#6366f1"), // indigo
   };
 
   useFrame(() => {
     const scrollY = scrollYProgress.get();
     const vel = Math.abs(scrollVelocity.get());
     
-    // Intensity bursts when scrolling fast
-    const intensityBurst = Math.min(vel * 5, 2.0);
+    // REDUCED Intensity bursts for subtlety
+    const intensityBurst = Math.min(vel * 2, 0.8);
 
     if (light1.current) {
         light1.current.color.lerpColors(colors.top1, colors.bottom1, scrollY);
-        light1.current.intensity = THREE.MathUtils.lerp(light1.current.intensity, 1.5 + intensityBurst, 0.1);
+        light1.current.intensity = THREE.MathUtils.lerp(light1.current.intensity, 1.0 + intensityBurst, 0.1);
     }
     if (light2.current) {
         light2.current.color.lerpColors(colors.top2, colors.bottom2, scrollY);
-        light2.current.intensity = THREE.MathUtils.lerp(light2.current.intensity, 1.0 + intensityBurst, 0.1);
+        light2.current.intensity = THREE.MathUtils.lerp(light2.current.intensity, 0.8 + intensityBurst, 0.1);
     }
     if (ambient.current) {
-        ambient.current.intensity = THREE.MathUtils.lerp(ambient.current.intensity, 0.2 + intensityBurst * 0.2, 0.1);
+        ambient.current.intensity = THREE.MathUtils.lerp(ambient.current.intensity, 0.15 + intensityBurst * 0.1, 0.1);
     }
   });
 
@@ -76,20 +76,19 @@ function InteractiveParticles() {
     };
   }, []);
 
-  // Subtle material color variation to break up flatness (5-10% shifts)
   useEffect(() => {
     if (!mesh.current) return;
-    const baseColor = new THREE.Color("#8b5cf6");
+    const baseColor = new THREE.Color("#6366f1"); // indigo
     
     for (let i = 0; i < count; i++) {
         const color = baseColor.clone();
         const shift = Math.random();
         
-        // Slightly shift color hue or brightness randomly per particle
-        if (shift > 0.6) color.lerp(new THREE.Color("#06b6d4"), 0.1); // 10% cyan mix
-        if (shift < 0.3) color.lerp(new THREE.Color("#ffffff"), 0.1); // 10% white brightness
+        // Strictly indigo/cyan/white variations
+        if (shift > 0.6) color.lerp(new THREE.Color("#22d3ee"), 0.15); // cyan mix
+        if (shift < 0.2) color.lerp(new THREE.Color("#ffffff"), 0.05); // white brightness
         
-        color.multiplyScalar(0.9 + Math.random() * 0.2); // 90% to 110% brightness variation
+        color.multiplyScalar(0.85 + Math.random() * 0.3); // brightness variation
         
         mesh.current.setColorAt(i, color);
     }
@@ -207,15 +206,14 @@ function InteractiveParticles() {
   return (
     <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
       <dodecahedronGeometry args={[0.06, 0]} />
-      {/* Base white color because setColorAt multiples against it natively */}
       <meshStandardMaterial 
          color="#ffffff" 
-         emissive="#06b6d4" 
-         emissiveIntensity={0.2} 
+         emissive="#22d3ee" 
+         emissiveIntensity={0.12} 
          roughness={0.2}
          metalness={0.8}
          transparent
-         opacity={0.8}
+         opacity={0.6}
       />
     </instancedMesh>
   );
@@ -233,7 +231,7 @@ export default function InteractiveWebGL() {
         className="absolute inset-0 pointer-events-none opacity-[0.03]" 
         style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
       ></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#05050f]/0 via-[#05050f]/40 to-[#05050f] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#05050f]/0 via-[#05050f]/60 to-[#05050f] pointer-events-none" />
     </div>
   );
 }

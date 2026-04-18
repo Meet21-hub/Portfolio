@@ -22,7 +22,7 @@ function Ticker({ items, reverse }: { items: string[]; reverse?: boolean }) {
         {doubled.map((item, i) => (
           <span key={i} className="inline-flex items-center gap-3 px-5 text-[11px] font-mono uppercase tracking-[0.3em] text-gray-600 hover:text-gray-300 transition-colors cursor-default">
             {item}
-            <span className="inline-block w-1 h-1 rounded-full bg-white/20 flex-shrink-0" />
+            <span className="inline-block w-1 h-1 rounded-none bg-white/20 flex-shrink-0" />
           </span>
         ))}
       </motion.div>
@@ -38,9 +38,9 @@ const bentoItems = [
     name: "Java",
     level: "Expert",
     desc: "Core language for all backend systems, REST APIs, and enterprise patterns.",
-    color: "#8b5cf6",
+    color: "#10b981", // Emerald
     span: "col-span-2 row-span-2", // large hero card
-    textSize: "text-5xl md:text-7xl",
+    textSize: "text-4xl md:text-6xl",
     detail: true,
   },
   {
@@ -49,9 +49,9 @@ const bentoItems = [
     name: "Spring Boot",
     level: "Advanced",
     desc: "Full application framework for building production-ready microservices.",
-    color: "#06b6d4",
+    color: "#ffffff", 
     span: "col-span-1 row-span-1",
-    textSize: "text-3xl md:text-4xl",
+    textSize: "text-xl md:text-2xl",
     detail: false,
   },
   {
@@ -60,9 +60,9 @@ const bentoItems = [
     name: "MySQL",
     level: "Advanced",
     desc: "Relational database design, complex queries, and schema optimization.",
-    color: "#f59e0b",
+    color: "#10b981", 
     span: "col-span-1 row-span-1",
-    textSize: "text-3xl md:text-4xl",
+    textSize: "text-xl md:text-2xl",
     detail: false,
   },
   {
@@ -71,9 +71,9 @@ const bentoItems = [
     name: "JWT Auth",
     level: "Advanced",
     desc: "Stateless authentication, RBAC, and secure API gateway patterns.",
-    color: "#ec4899",
+    color: "#ffffff", 
     span: "col-span-1 row-span-1",
-    textSize: "text-2xl md:text-3xl",
+    textSize: "text-lg md:text-xl",
     detail: false,
   },
   {
@@ -82,9 +82,9 @@ const bentoItems = [
     name: "REST APIs",
     level: "Advanced",
     desc: "Design-first API development with versioning and documentation.",
-    color: "#8b5cf6",
+    color: "#10b981", 
     span: "col-span-1 row-span-1",
-    textSize: "text-2xl md:text-3xl",
+    textSize: "text-lg md:text-xl",
     detail: false,
   },
   {
@@ -93,9 +93,9 @@ const bentoItems = [
     name: "Unity + C#",
     level: "Intermediate",
     desc: "Immersive first-person VR mechanics with real-time rendering in Unity.",
-    color: "#f59e0b",
+    color: "#ffffff", 
     span: "col-span-2 row-span-1",
-    textSize: "text-3xl md:text-4xl",
+    textSize: "text-2xl md:text-3xl",
     detail: false,
   },
   {
@@ -104,9 +104,9 @@ const bentoItems = [
     name: "Git · Next.js · Postman",
     level: "Advanced",
     desc: "",
-    color: "#06b6d4",
+    color: "#10b981", 
     span: "col-span-2 row-span-1",
-    textSize: "text-xl md:text-2xl",
+    textSize: "text-lg md:text-xl",
     detail: false,
   },
 ];
@@ -116,14 +116,14 @@ function BentoCard({ item, index }: { item: typeof bentoItems[0]; index: number 
     <motion.div variants={childVariants} className={item.span}>
       <GlassCard
         glowColor={item.color}
-        rounded="rounded-2xl"
-        className="h-full group"
+        rounded="rounded-none"
+        className="h-full group border-white/5"
       >
         {/* Base color tint */}
         <div
           className="absolute inset-0"
           style={{
-            background: `linear-gradient(135deg, ${item.color}12 0%, rgba(8,8,20,0.4) 100%)`,
+            background: `linear-gradient(135deg, ${item.color === '#ffffff' ? 'rgba(255,255,255,0.03)' : 'rgba(16,185,129,0.05)'} 0%, rgba(8,8,8,0) 100%)`,
           }}
         />
 
@@ -131,46 +131,38 @@ function BentoCard({ item, index }: { item: typeof bentoItems[0]; index: number 
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{
-            background: `radial-gradient(ellipse at 30% 30%, ${item.color}18, transparent 70%)`,
+            background: `radial-gradient(ellipse at 30% 30%, ${item.color}10, transparent 70%)`,
           }}
         />
 
-        <GlassGlare />
-
-        <div className="relative p-6 h-full flex flex-col justify-between z-10" style={{ minHeight: item.id === "java" ? "280px" : "130px" }}>
+        <div className="relative p-6 h-full flex flex-col justify-between z-10" style={{ minHeight: "220px" }}>
           {/* Top: label + dot */}
           <div className="flex items-center gap-2 mb-3">
             <div
-              className="w-1.5 h-1.5 rounded-full"
-              style={{ background: item.color, boxShadow: `0 0 6px ${item.color}` }}
+              className={`w-1.5 h-1.5 ${item.color === '#ffffff' ? 'bg-white' : 'bg-primary'}`}
+              style={{ boxShadow: `0 0 6px ${item.color}` }}
             />
             <span
-              className="text-[10px] font-mono uppercase tracking-[0.3em]"
-              style={{ color: `${item.color}cc` }}
+              className="text-[9px] font-mono uppercase tracking-[0.4em] text-white/30"
             >
               {item.label}
             </span>
           </div>
 
           {/* Skill name */}
-          <div className="flex-1 flex items-end">
-            <div>
-              <div
-                className={`${item.textSize} font-black tracking-tight leading-none mb-1 transition-colors duration-300`}
-                style={{ color: item.id === "java" ? item.color : "white" }}
-              >
-                {item.name}
-              </div>
+          <div className="flex-1 flex flex-col justify-end">
+            <div
+              className={`${item.textSize} font-outfit font-black tracking-tight leading-[0.95] mb-3 transition-colors duration-300 uppercase`}
+              style={{ color: item.color }}
+            >
+              {item.name}
+            </div>
+            <div className="flex flex-col gap-2">
               <div className="flex items-center gap-3">
-                <span className="text-[11px] font-mono text-gray-500">{item.level}</span>
-                {item.detail && item.desc && (
-                  <p className="hidden md:block text-xs text-gray-500 max-w-[200px] leading-relaxed mt-1">
-                    {item.desc}
-                  </p>
-                )}
+                <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest px-2 py-0.5 border border-white/5 rounded-none">{item.level}</span>
               </div>
-              {!item.detail && item.desc && (
-                <p className="text-xs text-gray-600 mt-2 leading-relaxed line-clamp-2 group-hover:text-gray-400 transition-colors duration-300">
+              {item.desc && (
+                <p className="text-[11px] text-white/40 leading-relaxed line-clamp-2 group-hover:text-white/60 transition-colors duration-300 font-inter">
                   {item.desc}
                 </p>
               )}
@@ -195,7 +187,7 @@ export default function SkillsSection() {
       {/* ── Marquee bands — slide up as section enters ─────────────── */}
       <motion.div
         variants={childVariants}
-        className="mb-16 border-y border-white/5 py-px space-y-px"
+        className="mb-16 border-y border-white/5 py-4 space-y-2 opacity-50"
       >
         <Ticker items={tickerRow1} />
         <Ticker items={tickerRow2} reverse />
@@ -207,13 +199,13 @@ export default function SkillsSection() {
         {/* LEFT: sticky heading */}
         <div className="lg:w-[35%] lg:sticky lg:top-28 shrink-0">
           <motion.div variants={childVariants}>
-            <p className="text-xs font-mono text-gray-500 uppercase tracking-[0.3em] mb-4">
-              02. Technical
+            <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.4em] mb-4">
+              02 / TECHNICAL
             </p>
-            <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-secondary via-white to-primary bg-[length:200%_auto] animate-gradient tracking-tighter leading-none mb-4 drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]">
-              CORE<br />ARSENAL
+            <h2 className="text-5xl md:text-7xl font-deltha text-white tracking-tight leading-[0.85] mb-6 uppercase">
+              Core<br />Arsenal
             </h2>
-            <div className="h-px w-16 bg-gradient-to-r from-secondary to-transparent mb-6" />
+            <div className="h-[1px] w-24 bg-primary mb-8" />
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Technologies I deploy with confidence. Backend-first, with a creative
               layer in VR and immersive systems.
@@ -228,7 +220,7 @@ export default function SkillsSection() {
                 <motion.div
                   key={s.label}
                   variants={childVariants}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-none bg-white/5 border border-white/10 text-xs font-mono"
                 >
                   <span className="text-white font-bold">{s.val}</span>
                   <span className="text-gray-500">{s.label}</span>
